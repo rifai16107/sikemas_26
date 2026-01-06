@@ -166,7 +166,7 @@
                     <li class="divider"></li>
                     <li><a href="?page=tsd">Surat Dinas</a></li>
                     <li><a href="?page=tst">Surat Tugas</a></li>
-                    <li><a href="?page=tst">Surat Khusus</a></li>
+                    <li><a href="?page=tsk">Surat Khusus</a></li>
                     <li><a href="?page=tsn">Nota Dinas</a></li>
                     <li class="divider"></li>
                     <li><a href="?page=tskep">Surat Keputusan (SK)</a></li>
