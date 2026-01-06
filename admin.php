@@ -68,6 +68,9 @@
                 case 'tsd':
                     include "transaksi_surat_dinas.php";
                     break;
+                case 'tsk':
+                    include "transaksi_surat_khusus.php";
+                    break;    
                 case 'tsn':
                     include "transaksi_surat_nodin.php";
                     break;
