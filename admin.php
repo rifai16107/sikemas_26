@@ -88,6 +88,8 @@
                     break;
                 case 'asn':
                     include "agenda_surat_nodin.php";
+                case 'ask':
+                    include "agenda_surat_khusus.php";    
                     break;    
                 case 'askep':
                     include "agenda_surat_keputusan.php";
@@ -244,7 +246,7 @@
                     </div>
                 </div>
             </a>
-            <a href="?page=tsn">
+            <a href="?page=tsk">
                 <div class="col s12 m4">
                     <div class="card deep brown">
                         <div class="card-content">

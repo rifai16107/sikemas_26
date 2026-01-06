@@ -180,7 +180,7 @@
                     <li class="divider"></li>
                     <li><a href="?page=asd">Surat Dinas</a></li>
                     <li><a href="?page=ast">Surat Tugas</a></li>
-                    <li><a href="?page=ast">Surat Khusus</a></li>
+                    <li><a href="?page=ask">Surat Khusus</a></li>
                     <li><a href="?page=asn">Nota Dinas</a></li>
                     <li class="divider"></li>
                     <li><a href="?page=askep">Surat Keputusan</a></li>
