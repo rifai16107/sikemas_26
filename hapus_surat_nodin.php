@@ -68,7 +68,7 @@
                                     <td width="1%">:</td>
                                     <td width="86%">';
                                     if(!empty($row['file'])){
-                                        echo ' <a class="blue-text" href="?page=gsm&act=fsm&id_nodin='.$row['id_nodin'].'">'.$row['file'].'</a>';
+                                        echo ' <a class="blue-text" href="?page=gsn&act=fsm&id_nodin='.$row['id_nodin'].'">'.$row['file'].'</a>';
                                     } else {
                                         echo ' Tidak ada file yang diupload';
                                     } echo '</td>

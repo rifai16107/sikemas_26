@@ -118,7 +118,10 @@
                     break;
                 case 'gsn':
                     include "galeri_sn.php";
-                    break;    
+                    break;
+                case 'gsk':
+                    include "galeri_sk.php";
+                    break;        
                 case 'gskep':
                     include "galeri_skep.php";
                     break;        
@@ -159,6 +162,7 @@
                 $count2 = mysqli_num_rows(mysqli_query($config, "SELECT * FROM tbl_surat_tugas"));
                 $count2d = mysqli_num_rows(mysqli_query($config, "SELECT * FROM tbl_surat_dinas"));
                 $count2n = mysqli_num_rows(mysqli_query($config, "SELECT * FROM tbl_surat_nodin"));
+                $count2k = mysqli_num_rows(mysqli_query($config, "SELECT * FROM tbl_surat_khusus"));
 
                 //menghitung jumlah surat disposisi
                   $count3 = mysqli_num_rows(mysqli_query($config, "SELECT * FROM tbl_surat_masuk LEFT OUTER JOIN tbl_disposisi ON tbl_surat_masuk.id_surat=tbl_disposisi.id_surat WHERE tbl_disposisi.tujuan IS NULL ORDER BY tbl_disposisi.id_disposisi"));
@@ -236,6 +240,16 @@
                         <div class="card-content">
                             <span class="card-title white-text"><i class="material-icons md-36">drafts</i> Jumlah Nota Dinas</span>
                             <?php echo '<h5 class="white-text link">'.$count2n.' Nota Dinas</h5>'; ?>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="?page=tsn">
+                <div class="col s12 m4">
+                    <div class="card deep brown">
+                        <div class="card-content">
+                            <span class="card-title white-text"><i class="material-icons md-36">drafts</i> Jumlah Surat Khusus</span>
+                            <?php echo '<h5 class="white-text link">'.$count2k.' Surat Khusus</h5>'; ?>
                         </div>
                     </div>
                 </div>

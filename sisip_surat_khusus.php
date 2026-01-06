@@ -66,7 +66,7 @@
                                     echo '<script language="javascript">window.history.back();</script>';
                                  } else {
                                     if(!preg_match("/^[a-zA-Z0-9., -]*$/", $tujuan_tgs)){
-                                          $_SESSION['tujuan_tgsk'] = 'Form Tujuan Tugas hanya boleh mengandung karakter huruf, angka, spasi, titik(.) dan koma(,) dan minus (-)';
+                                          $_SESSION['tujuan_tgsk'] = 'Form Tujuan Khusus hanya boleh mengandung karakter huruf, angka, spasi, titik(.) dan koma(,) dan minus (-)';
                                            echo '<script language="javascript">window.history.back();</script>';
                                         } else {
                                           if(!preg_match("/^[0-9.-]*$/", $tgl_mulai)){
@@ -89,7 +89,7 @@
                                             } else {
                                                
 
-                                                $cekspd = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE no_lamp_spd='$no_lamp_spd'");
+                                                $cekspd = mysqli_query($config, "SELECT * FROM tbl_surat_khusus WHERE no_lamp_spd='$no_lamp_spd'");
                                                 $result = mysqli_num_rows($cekspd);
                                                 
 
@@ -98,7 +98,7 @@
                                                     echo '<script language="javascript">window.history.back();</script>';
                                                 
                                                 } else {
-                                                $cek = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE no_surat='$no_surat'");
+                                                $cek = mysqli_query($config, "SELECT * FROM tbl_surat_khusus WHERE no_surat='$no_surat'");
                                                 $result = mysqli_num_rows($cek);
 
                                                 if($result > 0){
@@ -111,7 +111,7 @@
                                                     $x = explode('.', $file);
                                                     $eks = strtolower(end($x));
                                                     $ukuran = $_FILES['file']['size'];
-                                                    $target_dir = "upload/surat_nodin/";
+                                                    $target_dir = "upload/surat_khusus/";
 
                                                     if (! is_dir($target_dir)) {
                                                         mkdir($target_dir, 0755, true);
@@ -129,12 +129,12 @@
 
                                                                 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$nfile);
 
-                                                                $query = mysqli_query($config, "INSERT INTO tbl_surat_nodin(no_agenda,no_surtug,jenis_surat,tgl_surtug,kode,kode_spd,no_lamp_spd,nosu_lengkap,nolamp_lkp,tujuan_tgs,tgl_mulai, tgl_selesai,file,beban_ang,id_user)
+                                                                $query = mysqli_query($config, "INSERT INTO tbl_surat_khusus(no_agenda,no_surtug,jenis_surat,tgl_surtug,kode,kode_spd,no_lamp_spd,nosu_lengkap,nolamp_lkp,tujuan_tgs,tgl_mulai, tgl_selesai,file,beban_ang,id_user)
                                                             VALUES('$no_agenda','$no_surtug','$jenis_surat','$tgl_surtug','$nkode','$nkode_spd','$no_lamp_spd','$nosu_lengkap','$nolamp_lkp','$tujuan_tgs','$tgl_mulai','$tgl_selesai','$nfile','$beban_ang','$id_user')");
 
                                                                 if($query == true){
                                                                     $_SESSION['succAdd'] = 'SUKSES! Data berhasil ditambahkan';
-                                                                    header("Location: ./admin.php?page=tsn");
+                                                                    header("Location: ./admin.php?page=tsk");
                                                                     die();
                                                                 } else {
                                                                     $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
@@ -151,12 +151,12 @@
                                                     } else {
 
                                                         //jika form file kosong akan mengeksekusi script dibawah ini
-                                                        $query = mysqli_query($config, "INSERT INTO tbl_surat_nodin(no_agenda,no_surtug,jenis_surat,tgl_surtug,kode,kode_spd,no_lamp_spd,nosu_lengkap,nolamp_lkp,tujuan_tgs,tgl_mulai, tgl_selesai,file,beban_ang,id_user)
+                                                        $query = mysqli_query($config, "INSERT INTO tbl_surat_khusus(no_agenda,no_surtug,jenis_surat,tgl_surtug,kode,kode_spd,no_lamp_spd,nosu_lengkap,nolamp_lkp,tujuan_tgs,tgl_mulai, tgl_selesai,file,beban_ang,id_user)
                                                             VALUES('$no_agenda','$no_surtug','$jenis_surat','$tgl_surtug','$nkode','$nkode_spd','$no_lamp_spd','$nosu_lengkap','$nolamp_lkp','$tujuan_tgs','$tgl_mulai','$tgl_selesai','$nfile','$beban_ang','$id_user')");
 
                                                         if($query == true){
                                                             $_SESSION['succAdd'] = 'SUKSES! Data berhasil ditambahkan';
-                                                            header("Location: ./admin.php?page=tsn");
+                                                            header("Location: ./admin.php?page=tsk");
                                                             die();
                                                         } else {
                                                             $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
@@ -186,7 +186,7 @@
                     <nav class="secondary-nav">
                         <div class="nav-wrapper blue darken-1">
                             <ul class="left">
-                                <li class="waves-effect waves-light"><a href="?page=tsn&act=add" class="judul"><i class="material-icons">mail</i> Sisip No Surat Keluar/Nota Dinas (Silahkan Ubah Nomor Agenda dan Nomor Surat)</a></li>
+                                <li class="waves-effect waves-light"><a href="?page=tsk&act=add" class="judul"><i class="material-icons">mail</i> Sisip No Surat Keluar/Khusus (Silahkan Ubah Nomor Agenda dan Nomor Surat)</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -228,7 +228,7 @@
             <div class="row jarak-form">
 
                 <!-- Form START -->
-                <form class="col s12" method="POST" action="?page=tsn&act=add" enctype="multipart/form-data">
+                <form class="col s12" method="POST" action="?page=tsk&act=add" enctype="multipart/form-data">
 
                     <!-- Row in form START -->
                     <div class="row">
@@ -236,7 +236,7 @@
                             <i class="material-icons prefix md-prefix">looks_one</i>
                             <?php
                             echo '<input id="no_agenda" type="number" class="validate" name="no_agenda" value="';
-                                $sql = mysqli_query($config, "SELECT no_agenda FROM tbl_surat_nodin order by no_agenda ASC");
+                                $sql = mysqli_query($config, "SELECT no_agenda FROM tbl_surat_khusus order by no_agenda ASC");
                                 $no_agenda = "1";
                                 if (mysqli_num_rows($sql) == 0){
                                     echo $no_agenda;
@@ -268,7 +268,7 @@
                             <?php
                               
                                 echo '<input id="no_surtug" type="text" class="validate" name="no_surtug" value="';
-                                $sql = mysqli_query($config, "SELECT no_surtug FROM tbl_surat_nodin order by no_surtug ASC");
+                                $sql = mysqli_query($config, "SELECT no_surtug FROM tbl_surat_khusus order by no_surtug ASC");
                                 $no_surtug = "001";
                                 if (mysqli_num_rows($sql) == 0){
                                     echo $no_surtug;
@@ -297,7 +297,7 @@
                                         unset($_SESSION['errDup']);
                                 }
                             ?>
-                            <label for="no_surtug">Nomor Surat Keluar/Nota Dinas</label>
+                            <label for="no_surtug">Nomor Surat Keluar/Surat Khusus</label>
                         </div>
 
                         <div class="input-field col s6">
@@ -323,7 +323,7 @@
                             <i class="material-icons prefix md-prefix">featured_play_list</i><br>
                               
                                  <select name="jenis_surat" id="jenis_surat" type="text" class="browser-default validate" readonly required>
-                                      <option value="Nota Dinas">Nota Dinas</option>
+                                      <option value="Surat Khusus">Surat Khusus</option>
                                  </select>
                             <label for="jenis_surat">Jenis Surat</label><br>
                         </div>
@@ -351,7 +351,7 @@
                                               ?>
 
                                 </select><br>
-                        <label for="kode_spd">Kode SPD Lampiran Surat Tugas/Surat Keluar</label>
+                        <label for="kode_spd">Kode SPD Lampiran Surat Khusus/Surat Keluar</label>
                         </div>
                                 
                                 
@@ -361,7 +361,7 @@
                                     <?php
                                       
                                         echo '<input id="no_lamp_spd" type="text" class="validate" name="no_lamp_spd" value="';
-                                        $sql = mysqli_query($config, "SELECT no_lamp_spd FROM tbl_surat_nodin where no_lamp_spd <> '-' order by no_lamp_spd ASC");
+                                        $sql = mysqli_query($config, "SELECT no_lamp_spd FROM tbl_surat_khusus where no_lamp_spd <> '-' order by no_lamp_spd ASC");
                                         $no_lamp_spd = "001";
                                         if (mysqli_num_rows($sql) == 0){
                                             echo $no_lamp_spd;
@@ -406,7 +406,7 @@
                                     }
                                 ?>
                            
-                            <label for="tujuan_tgs">Tujuan Surat Keluar/Perihal Surat Tugas</label>
+                            <label for="tujuan_tgs">Tujuan Surat Keluar/Perihal Surat Khusus</label>
                         </div>
 
                         <div class="input-field col s6">
@@ -419,7 +419,7 @@
                                         unset($_SESSION['tgl_surtug']);
                                     }
                                 ?>
-                            <label for="tgl_surtug">Tanggal Surat Keluar/Surat Tugas</label>
+                            <label for="tgl_surtug">Tanggal Surat Keluar/Surat Khusus</label>
                         </div>
 
                         <div class="input-field col s6 right">
@@ -470,7 +470,7 @@
                                     <input type="file" id="file" name="file">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="Upload file/scan gambar surat tugas">
+                                    <input class="file-path validate" type="text" placeholder="Upload file/scan gambar surat khusus">
                                         <?php
                                             if(isset($_SESSION['errSize'])){
                                                 $errSize = $_SESSION['errSize'];
@@ -495,7 +495,7 @@
                             <button type="submit" name="submit" class="btn-large blue waves-effect waves-light">SIMPAN <i class="material-icons">done</i></button>
                         </div>
                         <div class="col 6">
-                            <a href="?page=tsn" class="btn-large deep-orange waves-effect waves-light">BATAL <i class="material-icons">clear</i></a>
+                            <a href="?page=tsk" class="btn-large deep-orange waves-effect waves-light">BATAL <i class="material-icons">clear</i></a>
                         </div>
                     </div>
 

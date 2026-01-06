@@ -20,8 +20,8 @@
             unset($_SESSION['errQ']);
         }
 
-    	$id_surat = mysqli_real_escape_string($config, $_REQUEST['id_surat']);
-    	$query = mysqli_query($config, "SELECT * FROM tbl_surat_tugas WHERE id_surat='$id_surat'");
+    	$id_suratkh = mysqli_real_escape_string($config, $_REQUEST['id_suratkh']);
+    	$query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus WHERE id_suratkh='$id_suratkh'");
 
     	if(mysqli_num_rows($query) > 0){
             $no = 1;
@@ -30,7 +30,7 @@
             if($_SESSION['id_user'] != $row['id_user'] AND $_SESSION['id_user'] > 2){
                 echo '<script language="javascript">
                         window.alert("ERROR! Anda tidak memiliki hak akses untuk menghapus data ini");
-                        window.location.href="./admin.php?page=tst";
+                        window.location.href="./admin.php?page=tsk";
                       </script>';
             } else {
 
@@ -68,7 +68,7 @@
                                     <td width="1%">:</td>
                                     <td width="86%">';
                                     if(!empty($row['file'])){
-                                        echo ' <a class="blue-text" href="?page=gst&act=fsm&id_surat='.$row['id_surat'].'">'.$row['file'].'</a>';
+                                        echo ' <a class="blue-text" href="?page=gsk&act=fsm&id_suratkh='.$row['id_suratkh'].'">'.$row['file'].'</a>';
                                     } else {
                                         echo ' Tidak ada file yang diupload';
                                     } echo '</td>
@@ -95,8 +95,8 @@
     			   		</table>
                         </div>
                         <div class="card-action">
-        	                <a href="?page=tst&act=del&submit=yes&id_surat='.$row['id_surat'].'" class="btn-large deep-orange waves-effect waves-light white-text">HAPUS <i class="material-icons">delete</i></a>
-        	                <a href="?page=tst" class="btn-large blue waves-effect waves-light white-text">BATAL <i class="material-icons">clear</i></a>
+        	                <a href="?page=tsk&act=del&submit=yes&id_suratkh='.$row['id_suratkh'].'" class="btn-large deep-orange waves-effect waves-light white-text">HAPUS <i class="material-icons">delete</i></a>
+        	                <a href="?page=tsk" class="btn-large blue waves-effect waves-light white-text">BATAL <i class="material-icons">clear</i></a>
     	                </div>
     	            </div>
                 </div>
@@ -104,38 +104,38 @@
             <!-- Row form END -->';
 
             	if(isset($_REQUEST['submit'])){
-            		$id_surat = $_REQUEST['id_surat'];
+            		$id_suratkh = $_REQUEST['id_suratkh'];
 
                     //jika ada file akan mengekseskusi script dibawah ini
                     if(!empty($row['file'])){
-                        unlink("upload/surat_tugas/".$row['file']);
-                        $query = mysqli_query($config, "DELETE FROM tbl_surat_tugas WHERE id_surat='$id_surat'");
+                        unlink("upload/surat_khusus/".$row['file']);
+                        $query = mysqli_query($config, "DELETE FROM tbl_surat_khusus WHERE id_suratkh='$id_suratkh'");
                        
 
                 		if($query == true){
                             $_SESSION['succDel'] = 'SUKSES! Data berhasil dihapus<br/>';
-                            header("Location: ./admin.php?page=tst");
+                            header("Location: ./admin.php?page=tsk");
                             die();
                 		} else {
                             $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
                             echo '<script language="javascript">
-                                    window.location.href="./admin.php?page=tst&act=del&id_surat='.$id_surat.'";
+                                    window.location.href="./admin.php?page=tsk&act=del&id_suratkh='.$id_suratkh.'";
                                   </script>';
                 		}
                 	} else {
 
                         //jika tidak ada file akan mengekseskusi script dibawah ini
-                        $query = mysqli_query($config, "DELETE FROM tbl_surat_tugas WHERE id_surat='$id_surat'");
+                        $query = mysqli_query($config, "DELETE FROM tbl_surat_khusus WHERE id_suratkh='$id_suratkh'");
                         
 
                         if($query == true){
                             $_SESSION['succDel'] = 'SUKSES! Data berhasil dihapus<br/>';
-                            header("Location: ./admin.php?page=tst");
+                            header("Location: ./admin.php?page=tsk");
                             die();
                         } else {
                             $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
                             echo '<script language="javascript">
-                                    window.location.href="./admin.php?page=tst&act=del&id_surat='.$id_surat.'";
+                                    window.location.href="./admin.php?page=tsk&act=del&id_suratkh='.$id_suratkh.'";
                                   </script>';
                         }
                     }

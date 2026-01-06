@@ -162,8 +162,7 @@
                                         <td>';
 
                                         if($_SESSION['id_user'] != $row['id_user'] AND $_SESSION['id_user'] > 2){
-                                            echo '<a class="btn small yellow darken-3 waves-effect waves-light" href="?page=ctktgs&id_nodin='.$row['id_nodin'].'" target="_blank">
-                                                <i class="material-icons">print</i> PRINT</a>';
+                                            echo '<a class="btn small yellow darken-3 waves-effect waves-light">RESTRICTED</a>';
                                         } else {
                                           echo '<a class="btn small blue waves-effect waves-light" href="?page=tsn&act=edit&id_nodin='.$row['id_nodin'].'">
                                                     <i class="material-icons">edit</i> EDIT</a>

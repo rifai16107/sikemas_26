@@ -303,7 +303,7 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">description</i><br><br>
                                                             
-                                <select name="kode" id="kode" type="text" class="browser-default validate" onchange='changeValue(this.value)' required>
+                                <select name="kode" id="kode" type="text" class="browser-default validate" required>
                                      <option value="">-Pilih-</option>
                                      <?php 
                                      $query=mysqli_query($config, "select * from tbl_klasifikasi order by kode asc"); 
@@ -330,7 +330,7 @@
 
                         <div class="input-field col s6">
                                 <i class="material-icons prefix md-prefix">description</i><br><br>
-                                <select name="kode_spd" id="kode_spd" type="text" class="browser-default validate" onchange='changeValue(this.value)' required>
+                                <select name="kode_spd" id="kode_spd" type="text" class="browser-default validate" required>
                                              <option value="">-Pilih-</option>
                                              <?php
                                              

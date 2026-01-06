@@ -104,7 +104,7 @@
                                         echo '
                                             <div class="col m3">
                                                 <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_dinas/'.$row['file'].'"/>
-                                                <a class="btn light-green darken-1" href="?page=gsd&act=fst&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
+                                                <a class="btn light-green darken-1" href="?page=gsd&act=fsd&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                             </div>';
                                     } else {
 
@@ -112,13 +112,13 @@
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/word.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsd&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsd&act=fsd&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsd&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsd&act=fsd&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
                                     }
@@ -178,7 +178,7 @@
                                     echo '
                                         <div class="col m3">
                                             <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_dinas/'.$row['file'].'"/>
-                                            <a class="btn light-green darken-1" href="?page=gsd&act=fst&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
+                                            <a class="btn light-green darken-1" href="?page=gsd&act=fsd&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                         </div>';
                                     } else {
 
@@ -186,13 +186,13 @@
                                         echo '
                                             <div class="col m3">
                                                 <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/word.png"/>
-                                                <a class="btn light-green darken-1" href="?page=gsd&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                <a class="btn light-green darken-1" href="?page=gsd&act=fsd&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                             </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsd&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsd&act=fsd&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
                                     }

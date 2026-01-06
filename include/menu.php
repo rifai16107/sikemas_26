@@ -188,7 +188,12 @@
             <li><a class="dropdown-button" href="#!" data-activates="galery">Galeri File <i class="material-icons md-18">arrow_drop_down</i></a></li>
                 <ul id='galery' class='dropdown-content'>
                     <li><a href="?page=gsm">Surat Masuk</a></li>
+                    <li class="divider"></li>
+                    <li><a href="?page=gsd">Surat Dinas</a></li>
                     <li><a href="?page=gst">Surat Tugas</a></li>
+                    <li><a href="?page=gsk">Surat Khusus</a></li>
+                    <li><a href="?page=gsn">Nota Dinas</a></li>
+                    <li class="divider"></li>
                     <li><a href="?page=gskep">Surat Keputusan</a></li>
                     
                 </ul>

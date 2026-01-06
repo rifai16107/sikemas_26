@@ -6,15 +6,15 @@
         die();
     } else {
 
-        $id_surat = mysqli_real_escape_string($config, $_REQUEST['id_surat']);
-        $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE id_surat='$id_surat'");
+        $id_suratkh = mysqli_real_escape_string($config, $_REQUEST['id_suratkh']);
+        $query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus WHERE id_suratkh='$id_suratkh'");
         if(mysqli_num_rows($query) > 0){
             while($row = mysqli_fetch_array($query)){
                 echo '
                     <div class="row jarak-form">
                         <ul class="collapsible white" data-collapsible="accordion">
                             <li>
-                                <div class="collapsible-header white"><i class="material-icons md-prefix md-36">expand_more</i><span class="add">Tampilkan detail data surat keluar</span></div>
+                                <div class="collapsible-header white"><i class="material-icons md-prefix md-36">expand_more</i><span class="add">Tampilkan detail data surat khusus</span></div>
                                     <div class="collapsible-body white">
                                         <div class="col m12 white">
                                             <table>
@@ -25,35 +25,30 @@
                                                         <td width="86%">'.$row['no_agenda'].'</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width="13%">No. Surat</td>
+                                                        <td width="13%">Nomor Surat khusus</td>
                                                         <td width="1%">:</td>
                                                         <td width="86%">'.$row['nosu_lengkap'].'</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td width="13%">Kode Klasifikasi</td>
-                                                        <td width="1%">:</td>
-                                                        <td width="86%">'.$row['kode'].'</td>
-                                                    </tr>
                                                     </tr>
                                                     <tr>
-                                                    <td width="13%">Isi Ringkas</td>
+                                                    <td width="13%">No lampiran SPD</td>
                                                     <td width="1%">:</td>
-                                                    <td width="86%">'.$row['isi'].'</td>
+                                                    <td width="86%">'.$row['nolamp_lkp'].'</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width="13%">Tujuan Surat</td>
+                                                        <td width="13%">Tujuan/Isi Surat khusus</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['tujuan'].'</td>
+                                                        <td width="86%">'.$row['tujuan_tgs'].'</td>
                                                     </tr>
                                                     
                                                     <tr>
-                                                        <td width="13%">Tanggal Surat</td>
-                                                        <td width="1%">:</td><td width="86%">'.indoDate($row['tgl_surat']).'</td>
+                                                        <td width="13%">Tanggal Surat khusus</td>
+                                                        <td width="1%">:</td><td width="86%">'.indoDate($row['tgl_surtug']).'</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width="13%">Keterangan</td>
+                                                        <td width="13%">Periode Kegiatan / Surat Khusus</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['keterangan'].'</td>
+                                                        <td width="86%">'.indodate($row['tgl_mulai']).' s.d '.indodate($row['tgl_selesai']).'</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -76,7 +71,7 @@
                             $eks = strtolower(end($x));
 
                             if(in_array($eks, $ekstensi) == true){
-                                echo '<img class="gbr" data-caption="'.date('d M Y', strtotime($row['tgl_catat'])).'" src="./upload/surat_keluar/'.$row['file'].'"/>';
+                                echo '<img class="gbr" data-caption="'.date('d M Y', strtotime($row['tgl_surtug'])).'" src="./upload/surat_khusus/'.$row['file'].'"/>';
                             } else {
 
                                 if(in_array($eks, $ekstensi2) == true){
@@ -87,10 +82,10 @@
                                                 <div class="col s9 left">
                                                     <div class="card">
                                                         <div class="card-content">
-                                                            <p>File lampiran surat keluar ini bertipe <strong>document</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
+                                                            <p>File lampiran surat dinas ini bertipe <strong>document</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
                                                         </div>
                                                         <div class="card-action">
-                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_keluar/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
+                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_khusus/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -109,10 +104,10 @@
                                                 <div class="col s9 left">
                                                     <div class="card">
                                                         <div class="card-content">
-                                                            <p>File lampiran surat keluar ini bertipe <strong>PDF</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
+                                                            <p>File lampiran surat dinas ini bertipe <strong>PDF</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
                                                         </div>
                                                         <div class="card-action">
-                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_keluar/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
+                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_khusus/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
                                                         </div>
                                                     </div>
                                                 </div>

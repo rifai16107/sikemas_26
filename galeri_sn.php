@@ -59,7 +59,7 @@
                             die();
                         } else {
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE tgl_surtug BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_surat DESC LIMIT 10");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE tgl_surtug BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_nodin DESC LIMIT 10");
 
                         echo '<!-- Row form Start -->
                             <div class="row jarak-form black-text">
@@ -104,7 +104,7 @@
                                         echo '
                                             <div class="col m3">
                                                 <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_nodin/'.$row['file'].'"/>
-                                                <a class="btn light-green darken-1" href="?page=gsn&act=fst&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
+                                                <a class="btn light-green darken-1" href="?page=gsn&act=fsn&id_nodin='.$row['id_nodin'].'">Tampilkan Ukuran Penuh</a>
                                             </div>';
                                     } else {
 
@@ -112,13 +112,13 @@
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/word.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsn&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsn&act=fsn&id_nodin='.$row['id_nodin'].'">Lihat Detail File</a>
                                                 </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsn&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsn&act=fsn&id_nodin='.$row['id_nodin'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
                                     }
@@ -178,7 +178,7 @@
                                     echo '
                                         <div class="col m3">
                                             <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_nodin/'.$row['file'].'"/>
-                                            <a class="btn light-green darken-1" href="?page=gsn&act=fst&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
+                                            <a class="btn light-green darken-1" href="?page=gsn&act=fsn&id_nodin='.$row['id_nodin'].'">Tampilkan Ukuran Penuh</a>
                                         </div>';
                                     } else {
 
@@ -186,13 +186,13 @@
                                         echo '
                                             <div class="col m3">
                                                 <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/word.png"/>
-                                                <a class="btn light-green darken-1" href="?page=gsn&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                <a class="btn light-green darken-1" href="?page=gsn&act=fsn&id_nodin='.$row['id_nodin'].'">Lihat Detail File</a>
                                             </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsn&act=fst&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsn&act=fsn&id_nodin='.$row['id_nodin'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
                                     }

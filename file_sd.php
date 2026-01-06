@@ -46,7 +46,7 @@
                                                         <td width="1%">:</td><td width="86%">'.indoDate($row['tgl_surtug']).'</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width="13%">Periode Kegiatan / Dinas</td>
+                                                        <td width="13%">Periode Kegiatan / Surat Dinas</td>
                                                         <td width="1%">:</td>
                                                         <td width="86%">'.indodate($row['tgl_mulai']).' s.d '.indodate($row['tgl_selesai']).'</td>
                                                     </tr>

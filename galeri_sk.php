@@ -35,7 +35,7 @@
                                     <div class="nav-wrapper blue darken-1">
                                         <div class="col m12">
                                             <ul class="left">
-                                                <li class="waves-effect waves-light"><a href="?page=gsk" class="judul"><i class="material-icons">image</i> Galeri File Surat Keluar</a></li>
+                                                <li class="waves-effect waves-light"><a href="?page=gsk" class="judul"><i class="material-icons">image</i> Galeri File Surat Khusus</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                             die();
                         } else {
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE tgl_surat BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_surat DESC LIMIT 10");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus WHERE tgl_surat BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_suratkh DESC LIMIT 10");
 
                         echo '<!-- Row form Start -->
                             <div class="row jarak-form black-text">
@@ -84,7 +84,7 @@
                             <!-- Row form END -->
 
                             <div class="row agenda">
-                                <div class="col s12"><p class="warna agenda">Galeri file surat keluar antara tanggal <strong>'.indoDate($dari_tanggal).'</strong> sampai dengan tanggal <strong>'.indoDate($sampai_tanggal).'</strong></p>
+                                <div class="col s12"><p class="warna agenda">Galeri file surat khusus antara tanggal <strong>'.indoDate($dari_tanggal).'</strong> sampai dengan tanggal <strong>'.indoDate($sampai_tanggal).'</strong></p>
                                 </div>
                             </div>';
 
@@ -103,8 +103,8 @@
                                     if(in_array($eks, $ekstensi) == true){
                                         echo '
                                             <div class="col m3">
-                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./upload/surat_keluar/'.$row['file'].'"/>
-                                                <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
+                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./upload/surat_khusus/'.$row['file'].'"/>
+                                                <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_suratkh='.$row['id_suratkh'].'">Tampilkan Ukuran Penuh</a>
                                             </div>';
                                     } else {
 
@@ -112,13 +112,13 @@
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./asset/img/word.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_suratkh='.$row['id_suratkh'].'">Lihat Detail File</a>
                                                 </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_suratkh='.$row['id_suratkh'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
                                     }
@@ -138,7 +138,7 @@
                     } else {
 
                         //script untuk menampilkan data
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar ORDER BY id_surat DESC LIMIT $curr, $limit");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus ORDER BY id_suratkh DESC LIMIT $curr, $limit");
                         if(mysqli_num_rows($query) > 0){
 
                             echo '
@@ -177,22 +177,22 @@
                                     if(in_array($eks, $ekstensi) == true){
                                     echo '
                                         <div class="col m3">
-                                            <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./upload/surat_keluar/'.$row['file'].'"/>
-                                            <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
+                                            <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./upload/surat_khusus/'.$row['file'].'"/>
+                                            <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_suratkh='.$row['id_suratkh'].'">Tampilkan Ukuran Penuh</a>
                                         </div>';
                                     } else {
 
                                         if(in_array($eks, $ekstensi2) == true){
                                         echo '
                                             <div class="col m3">
-                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./asset/img/word.png"/>
-                                                <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/word.png"/>
+                                                <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_suratkh='.$row['id_suratkh'].'">Lihat Detail File</a>
                                             </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surat']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./asset/img/pdf.png"/>
+                                                    <a class="btn light-green darken-1" href="?page=gsk&act=fsk&id_suratkh='.$row['id_suratkh'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
                                     }
@@ -209,7 +209,7 @@
                         } echo '
                         </div>';
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus");
                         $cdata = mysqli_num_rows($query);
                         $cpg = ceil($cdata/$limit);
 
