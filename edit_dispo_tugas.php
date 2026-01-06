@@ -1,0 +1,257 @@
+<?php
+    //cek session
+    if(empty($_SESSION['admin'])){
+        $_SESSION['err'] = '<center>Anda harus login terlebih dahulu!</center>';
+        header("Location: ./");
+        die();
+    } else {
+
+        if(isset($_REQUEST['submit'])){
+
+            $id_surat = $_REQUEST['id_surat'];
+            $query = mysqli_query($config, "SELECT * FROM tbl_surat_tugas WHERE id_surat='$id_surat'");
+            list($id_surat) = mysqli_fetch_array($query);
+
+            //validasi form kosong
+            if($_REQUEST['nama_pengikut'] == "" || $_REQUEST['sifat'] == "" || $_REQUEST['catatan'] == ""){
+                $_SESSION['errEmpty'] = 'ERROR! Semua form wajib diisi';
+                echo '<script language="javascript">window.history.back();</script>';
+            } else {
+
+                $id_disposisi = $_REQUEST['id_disposisi'];
+                $nama_peg = $_REQUEST['nama_peg'];
+                $nip = $_REQUEST['nip'];
+                $pangkat = $_REQUEST['pangkat'];
+                $jabatan = $_REQUEST['jabatan'];
+                $nama_pengikut = $_REQUEST['nama_pengikut'];
+                $sifat = $_REQUEST['sifat'];
+                $catatan = $_REQUEST['catatan'];
+                $id_user = $_SESSION['id_user'];
+
+                //validasi input data
+                if(!preg_match("/^[a-zA-Z0-9.,() \/ -]*$/", $nama_peg)){
+                    $_SESSION['nama_pegk'] = 'Form Nama Pegawai hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-),kurung() dan garis miring(/)';
+                    echo '<script language="javascript">window.history.back();</script>';
+                    } else {
+                        if(!preg_match("/^[a-zA-Z0-9.,() \/ -]*$/", $nip)){
+                                $_SESSION['nipk'] = 'Form NIP hanya boleh mengandung karakter huruf, angka, spasi, titik(.), minus(-) dan garis miring(/)';
+                                echo '<script language="javascript">window.history.back();</script>';
+                            } else {
+
+                                if(!preg_match("/^[a-zA-Z0-9.,() \/ -]*$/", $pangkat)){
+                                    $_SESSION['pangkatk'] = 'Form Pangkat hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), kurung() dan garis miring(/)';
+                                    echo '<script language="javascript">window.history.back();</script>';
+                                } else {
+
+                                    if(!preg_match("/^[a-zA-Z0-9.,() \/ -]*$/", $jabatan)){
+                                        $_SESSION['jabatank'] = 'Form Jabatan hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), kurung() dan garis miring(/)';
+                                        echo '<script language="javascript">window.history.back();</script>';
+                                    } else {
+
+                    if(!preg_match("/^[a-zA-Z0-9.,_()%&@\/\r\n -]*$/", $nama_pengikut)){
+                        $_SESSION['nama_pengikut'] = 'Form Nama Pengikut hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-), garis miring(/), dan(&), underscore(_), kurung(), persen(%) dan atau(@)';
+                        echo '<script language="javascript">window.history.back();</script>';
+                    } else {
+
+                        
+                            if(!preg_match("/^[a-zA-Z0-9.,()%@\/ -]*$/", $sifat)){
+                                $_SESSION['sifat'] = 'Form sifat hanya boleh mengandung karakter huruf, angka, spasi, titik(.), koma(,), minus(-) garis miring(/), dan kurung()';
+                                echo '<script language="javascript">window.history.back();</script>';
+                            } else {
+
+                                if(!preg_match("/^[a-zA-Z0-9.,()%@\/ -]*$/", $catatan)){
+                                    $_SESSION['catatan'] = 'Form catatan hanya boleh mengandung karakter huruf dan spasi';
+                                    echo '<script language="javascript">window.history.back();</script>';
+                                } else {
+
+                                    $query = mysqli_query($config, "UPDATE tbl_dispo_tugas SET nama_peg='$nama_peg', nip='$nip', pangkat='$pangkat', jabatan='$jabatan', nama_pengikut='$nama_pengikut', sifat='$sifat', catatan='$catatan', id_surat='$id_surat', id_user='$id_user' WHERE id_disposisi='$id_disposisi'");
+
+                                    if($query == true){
+                                        $_SESSION['succEdit'] = 'SUKSES! Data berhasil diupdate loh';
+                                        echo '<script language="javascript">
+                                                window.location.href="./admin.php?page=tst&act=disp_tgs&id_surat='.$id_surat.'";
+                                              </script>';
+                                    } else {
+                                        $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
+                                        echo '<script language="javascript">window.history.back();</script>';
+                                    }
+                                }
+                            }
+                           }
+                          }  
+                        }
+                    }
+                }
+            }
+        } else {
+
+             $id_disposisi = mysqli_real_escape_string($config, $_REQUEST['id_disposisi']);
+            $query = mysqli_query($config, "SELECT id_disposisi,nama_peg, nip, pangkat, jabatan, nama_pengikut, sifat, catatan, id_surat, id_user FROM tbl_dispo_tugas WHERE id_disposisi='$id_disposisi'");
+            list($id_disposisi, $nama_peg, $nip, $pangkat, $jabatan, $nama_pengikut, $sifat, $catatan, $id_surat, $id_user) = mysqli_fetch_array($query);
+           ?>
+
+                <!-- Row Start -->
+                <div class="row">
+                    <!-- Secondary Nav START -->
+                    <div class="col s12">
+                        <nav class="secondary-nav">
+                            <div class="nav-wrapper blue darken-1">
+                                <ul class="left">
+                                    <li class="waves-effect waves-light"><a href="#" class="judul"><i class="material-icons">edit</i> Edit Nama Penugasan</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- Secondary Nav END -->
+                </div>
+                <!-- Row END -->
+
+                <?php
+                    if(isset($_SESSION['errEmpty'])){
+                        $errEmpty = $_SESSION['errEmpty'];
+                        echo '<div id="alert-message" class="row">
+                                <div class="col m12">
+                                    <div class="card red lighten-5">
+                                        <div class="card-content notif">
+                                            <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errEmpty.'</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                        unset($_SESSION['errEmpty']);
+                    }
+                    if(isset($_SESSION['errQ'])){
+                        $errQ = $_SESSION['errQ'];
+                        echo '<div id="alert-message" class="row">
+                                <div class="col m12">
+                                    <div class="card red lighten-5">
+                                        <div class="card-content notif">
+                                            <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errQ.'</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                        unset($_SESSION['errQ']);
+                    }
+                ?>
+
+                <!-- Row form Start -->
+                <div class="row jarak-form">
+
+                    <!-- Form START -->
+                    <form class="col s12" method="post" action="">
+
+                        <!-- Row in form START -->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                
+                                <input type="hidden" value="<?php echo $row['id_disposisi'] ;?>">
+                                <i class="material-icons prefix md-prefix">account_box</i><br>
+                                <div class="input-field col s11 right">
+                                <select name="nama_peg" id="nama_peg" type="text" class="browser-default validate" onchange='changeValue(this.value)' readonly>
+                           
+                                 
+
+                                 <option value="<?php echo $nama_peg;?>"><?php echo $nama_peg;?></option>
+                                 <?php 
+                                 $query=mysqli_query($config, "select * from tbl_pegawai order by nama_peg asc"); 
+                                 $result = mysqli_query($config, "select * from tbl_pegawai order by nama_peg asc");  
+                                 $jsArray = "var prdName = new Array();\n";
+                                 while ($row = mysqli_fetch_array($result)) {  
+                                  
+
+                                 echo '<option name="nama_peg"  value="' . $row['nama_peg'] . '">' . $row['nama_peg'] . '</option>';  
+                                 $jsArray .= "prdName['" . $row['nama_peg'] . "'] = {nip:'" . addslashes($row['nip']) . "',pangkat:'".addslashes($row['pangkat'])."',jabatan:'".addslashes($row['jabatan'])."'};\n";
+                                  }
+                                 
+                                  ?>
+                                </select>
+
+                                <input id="nip" type="text" class="validate" name="nip" value="<?php echo $nip ;?>" readonly >
+                                <input id="pangkat" type="text" class="validate" name="pangkat" value="<?php echo $pangkat;?>" readonly >
+                                <input id="jabatan" type="text" class="validate" name="jabatan" value="<?php echo $jabatan;?>" readonly >
+                            </div>    
+                            
+                                <label for="nama_peg">Nama yang ditugaskan</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix md-prefix">low_priority</i><label>Jenis Surat Tugas</label><br/>
+                                <div class="input-field col s11 right">
+                                    <select class="browser-default validate" name="sifat" id="sifat" required>
+                                        <option value="<?php echo $sifat; ?>"><?php echo $sifat; ?></option>
+                                        <option value="Kegiatan Statistik">Kegiatan Statistik</option>
+                                        <option value="Perjalanan Dinas">Perjalanan Dinas</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                </select><br>
+                               </div>
+                                <?php
+                                    if(isset($_SESSION['sifat'])){
+                                        $sifat = $_SESSION['sifat'];
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$sifat.'</div>';
+                                        unset($_SESSION['sifat']);
+                                    }
+                                ?>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix md-prefix">description</i>
+                                <input id="nama_pengikut" type="text" class="validate" name="nama_pengikut" value="<?php echo $nama_pengikut ;?>"required>
+                                    <?php
+                                        if(isset($_SESSION['nama_pengikut'])){
+                                            $nama_pengikut = $_SESSION['nama_pengikut'];
+                                            echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$nama_pengikut.'</div>';
+                                            unset($_SESSION['nama_pengikut']);
+                                        }
+                                    ?>
+                                <label for="nama_pengikut">Nama Petugas Lainnya</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix md-prefix">featured_play_list   </i>
+                                <input id="catatan" type="text" class="validate" name="catatan" value="<?php echo $catatan;?>" required>
+                                    <?php
+                                        if(isset($_SESSION['catatan'])){
+                                            $catatan = $_SESSION['catatan'];
+                                            echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$catatan.'</div>';
+                                            unset($_SESSION['catatan']);
+                                        }
+                                    ?>
+                               <label for="catatan">Catatan</label>
+                            </div>
+                            
+                                                                                  
+                          
+                        </div>    
+                        <!-- Row in form END -->
+
+                        <div class="row">
+                            <div class="col 6">
+                                <button type="submit" name ="submit" class="btn-large blue waves-effect waves-light">SIMPAN <i class="material-icons">done</i></button>
+                            </div>
+                            <div class="col 6">
+                                <a href="?page=tst&act=disp_tgs&id_surat=<?php echo $id_surat; ?>" class="btn-large deep-orange waves-effect waves-light">BATAL <i class="material-icons">clear</i></a>
+                            </div>
+                        </div>
+
+                    </form>
+                    <!-- Form END -->
+
+                </div>
+                <!-- Row form END -->
+
+<?php
+                }
+            } 
+
+        
+    
+?>
+<script type="text/javascript"> 
+<?php echo $jsArray; ?>
+function changeValue(id){
+    document.getElementById('nip').value = prdName[id].nip;
+    document.getElementById('pangkat').value = prdName[id].pangkat;
+    document.getElementById('jabatan').value = prdName[id].jabatan;
+};
+</script>
