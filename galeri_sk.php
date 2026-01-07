@@ -209,7 +209,7 @@
                         } echo '
                         </div>';
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus WHERE file <>''");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_khusus");
                         $cdata = mysqli_num_rows($query);
                         $cpg = ceil($cdata/$limit);
 
