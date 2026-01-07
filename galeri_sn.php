@@ -59,7 +59,7 @@
                             die();
                         } else {
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE tgl_surtug BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_nodin DESC LIMIT 10");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE tgl_surtug BETWEEN '$dari_tanggal' AND '$sampai_tanggal' WHERE file <>'' ORDER By id_nodin DESC LIMIT 10");
 
                         echo '<!-- Row form Start -->
                             <div class="row jarak-form black-text">
@@ -138,7 +138,7 @@
                     } else {
 
                         //script untuk menampilkan data
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin ORDER BY id_nodin DESC LIMIT $curr, $limit");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE file <>'' ORDER BY id_nodin DESC LIMIT $curr, $limit");
                         if(mysqli_num_rows($query) > 0){
 
                             echo '
@@ -209,7 +209,7 @@
                         } echo '
                         </div>';
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_nodin WHERE file <>''");
                         $cdata = mysqli_num_rows($query);
                         $cpg = ceil($cdata/$limit);
 
