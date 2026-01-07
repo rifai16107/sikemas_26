@@ -57,9 +57,13 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="?page=tsm">Surat Masuk</a></li>
-                                <li><a href="?page=tst">Surat Keluar/Tugas</a></li>
+                                <li class="divider"></li>
+                                <li><a href="?page=tsd">Surat Dinas</a></li>
+                                <li><a href="?page=tst">Surat Tugas</a></li>
+                                <li><a href="?page=tsk">Surat Khusus</a></li>
+                                <li><a href="?page=tsn">Nota Dinas</a></li>
+                                <li class="divider"></li>
                                 <li><a href="?page=tskep">Surat Keputusan (SK)</a></li>
-
                             </ul>
                         </div>
                    </li>
@@ -75,8 +79,13 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="?page=asm">Surat Masuk</a></li>
-                                <li><a href="?page=ast">Surat Keluar/Tugas</a></li>
-                                <li><a href="?page=askep">Surat Keputusan</a></li>                                
+                                <li class="divider"></li>
+                                <li><a href="?page=asd">Surat Dinas</a></li>
+                                <li><a href="?page=ast">Surat Tugas</a></li>
+                                <li><a href="?page=ask">Surat Khusus</a></li>
+                                <li><a href="?page=asn">Nota Dinas</a></li>
+                                <li class="divider"></li>
+                                <li><a href="?page=askep">Surat Keputusan</a></li>                               
                             </ul>
                         </div>
                     </li>
@@ -89,7 +98,12 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="?page=gsm">Surat Masuk</a></li>
-                                <li><a href="?page=gst">Surat Keluar/Tugas</a></li>
+                                <li class="divider"></li>
+                                <li><a href="?page=gsd">Surat Dinas</a></li>
+                                <li><a href="?page=gst">Surat Tugas</a></li>
+                                <li><a href="?page=gsk">Surat Khusus</a></li>
+                                <li><a href="?page=gsn">Nota Dinas</a></li>
+                                <li class="divider"></li>
                                 <li><a href="?page=gskep">Surat Keputusan</a></li>
                             </ul>
                         </div>
@@ -100,7 +114,7 @@
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
-                        <a class="collapsible-header"><i class="material-icons">assignment</i> Buku Agenda</a>
+                        <a class="collapsible-header"><i class="material-icons">assignment</i> Kode Klasifikasi Arsip (KKA)</a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="?page=ref">KKA Surat Keluar</a></li>
