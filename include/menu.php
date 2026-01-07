@@ -114,7 +114,7 @@
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
-                        <a class="collapsible-header"><i class="material-icons">assignment</i> Kode Klasifikasi Arsip (KKA)</a>
+                        <a class="collapsible-header"><i class="material-icons">assignment</i>KKA</a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="?page=ref">KKA Surat Keluar</a></li>
