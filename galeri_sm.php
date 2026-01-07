@@ -138,7 +138,7 @@
                     } else {
 
                         //script untuk menampilkan data
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk ORDER BY id_surat DESC LIMIT $curr, $limit");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE file <>'' ORDER BY id_surat DESC LIMIT $curr, $limit");
                         if(mysqli_num_rows($query) > 0){
 
                             echo '
@@ -210,7 +210,7 @@
                         } echo '
                         </div>';
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE file <>''");
                         $cdata = mysqli_num_rows($query);
                         $cpg = ceil($cdata/$limit);
 

@@ -103,7 +103,7 @@
                                     if(in_array($eks, $ekstensi) == true){
                                         echo '
                                             <div class="col m3">
-                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_keluar/'.$row['file'].'"/>
+                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_tugas/'.$row['file'].'"/>
                                                 <a class="btn light-green darken-1" href="?page=gst&act=fst&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                             </div>';
                                     } else {
@@ -138,7 +138,7 @@
                     } else {
 
                         //script untuk menampilkan data
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_tugas ORDER BY id_surat DESC LIMIT $curr, $limit");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_tugas WHERE file <>'' ORDER BY id_surat DESC LIMIT $curr, $limit");
                         if(mysqli_num_rows($query) > 0){
 
                             echo '
@@ -177,7 +177,7 @@
                                     if(in_array($eks, $ekstensi) == true){
                                     echo '
                                         <div class="col m3">
-                                            <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_keluar/'.$row['file'].'"/>
+                                            <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_surtug']).'" src="./upload/surat_tugas/'.$row['file'].'"/>
                                             <a class="btn light-green darken-1" href="?page=gst&act=fst&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                         </div>';
                                     } else {
@@ -209,7 +209,7 @@
                         } echo '
                         </div>';
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_tugas");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_tugas ");
                         $cdata = mysqli_num_rows($query);
                         $cpg = ceil($cdata/$limit);
 

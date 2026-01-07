@@ -88,6 +88,7 @@
                     break;
                 case 'asn':
                     include "agenda_surat_nodin.php";
+                    break; 
                 case 'ask':
                     include "agenda_surat_khusus.php";    
                     break;    
