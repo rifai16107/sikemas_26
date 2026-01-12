@@ -53,13 +53,14 @@
 
                         $dari_tanggal = $_REQUEST['dari_tanggal'];
                         $sampai_tanggal = $_REQUEST['sampai_tanggal'];
-
+                        
+                       
                         if($_REQUEST['dari_tanggal'] == "" || $_REQUEST['sampai_tanggal'] == ""){
                             header("Location: ./admin.php?page=gsd");
                             die();
                         } else {
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_dinas WHERE tgl_surtug BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_surat DESC LIMIT 10");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_dinas WHERE tgl_surtug BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_surat DESC");
 
                         echo '<!-- Row form Start -->
                             <div class="row jarak-form black-text">

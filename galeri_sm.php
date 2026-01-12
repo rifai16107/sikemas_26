@@ -102,7 +102,7 @@
 
                                     if(in_array($eks, $ekstensi) == true){
                                         echo '
-                                            <div class="col m3">
+                                            <div class="col m2">
                                                 <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./upload/surat_masuk/'.$row['file'].'"/>
                                                 <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                             </div>';
@@ -110,13 +110,13 @@
 
                                         if(in_array($eks, $ekstensi2) == true){
                                             echo '
-                                                <div class="col m3">
+                                                <div class="col m2">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/word.png"/>
                                                     <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         } else {
                                             echo '
-                                                <div class="col m3">
+                                                <div class="col m2">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/pdf.png"/>
                                                     <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
@@ -176,7 +176,7 @@
 
                                     if(in_array($eks, $ekstensi) == true){
                                     echo '
-                                        <div class="col m3">
+                                        <div class="col m2">
                                             <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./upload/surat_masuk/'.$row['file'].'"/>
                                             <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                         </div>';
@@ -184,13 +184,13 @@
 
                                         if(in_array($eks, $ekstensi2) == true){
                                         echo '
-                                            <div class="col m3">
+                                            <div class="col m2">
                                                 <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/word.png"/>
                                                 <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                             </div>';
                                         } else {
                                             echo '
-                                                <div class="col m3">
+                                                <div class="col m2">
                                                     <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/pdf.png"/>
                                                     <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';

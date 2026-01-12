@@ -120,8 +120,8 @@
             display: none;
         }
         .galeri {
-            width: 100%;
-            height: 26rem;
+            width:90%;
+            height: 13rem;
         }
         .gbr {
             float: right;
